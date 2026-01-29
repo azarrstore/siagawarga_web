@@ -1,0 +1,39 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null;
+    }
+
+    function validStatus(s) {
+      return s in ['safe', 'help', 'unreachable'];
+    }
+
+    function validNeeds(needs) {
+      return needs is list
+        && needs.size() <= 6
+        && needs.all(n => n is string && n.size() <= 20);
+    }
+
+    function validString(s, min, max) {
+      return s is string && s.size() >= min && s.size() <= max;
+    }
+
+    match /checkins/{doc} {
+      allow read: if isAdmin();
+
+      allow create: if
+        validString(request.resource.data.regionCode, 3, 40) &&
+        validString(request.resource.data.name, 1, 60) &&
+        validStatus(request.resource.data.status) &&
+        (request.resource.data.reporter in ['self', 'other']) &&
+
+        (!('phone' in request.resource.data) || (request.resource.data.phone is string && request.resource.data.phone.size() <= 20)) &&
+        (!('notes' in request.resource.data) || (request.resource.data.notes is string && request.resource.data.notes.size() <= 300)) &&
+        (!('needs' in request.resource.data) || validNeeds(request.resource.data.needs));
+
+      allow update, delete: if false;
+    }
+  }
+}

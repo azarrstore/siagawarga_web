@@ -1,0 +1,192 @@
+:root{
+  --bg:#0b1220;
+  --card:#111b2f;
+  --muted:#9fb0d0;
+  --text:#e7efff;
+  --line:rgba(255,255,255,.08);
+  --accent:#4ea1ff;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: radial-gradient(1200px 700px at 20% 10%, rgba(78,161,255,.18), transparent 60%),
+              radial-gradient(900px 500px at 80% 30%, rgba(180,90,255,.14), transparent 60%),
+              var(--bg);
+  color:var(--text);
+}
+
+.page{min-height:100%}
+.container{max-width:960px;margin:0 auto;padding:18px}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;border-bottom:1px solid var(--line);
+  background: rgba(5,10,20,.35);
+  backdrop-filter: blur(10px);
+  position:sticky;top:0;z-index:10;
+}
+.brand{display:flex;gap:10px;align-items:center}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px rgba(78,161,255,.7)}
+.brandTitle{font-weight:800;letter-spacing:.2px}
+.brandSub{font-size:12px;color:var(--muted)}
+
+.nav{display:flex;gap:10px}
+.navLink{
+  color:var(--text);text-decoration:none;
+  padding:8px 10px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,.03)
+}
+.navLink:hover{border-color:rgba(78,161,255,.55)}
+
+.card{
+  background: rgba(17,27,47,.78);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.stack{display:flex;flex-direction:column;gap:12px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.grid2{grid-template-columns:1fr}}
+
+label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px}
+input,textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  outline:none;
+}
+input:focus,textarea:focus{border-color:rgba(78,161,255,.6)}
+
+.btn{
+  margin-top:12px;
+  padding:10px 14px;
+  border-radius:14px;
+  border:1px solid rgba(78,161,255,.35);
+  background: rgba(78,161,255,.18);
+  color:var(--text);
+  font-weight:700;
+  cursor:pointer;
+}
+.btn:hover{border-color:rgba(78,161,255,.7)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:rgba(255,255,255,.03);border-color:var(--line)}
+
+.muted{color:var(--muted)}
+.tiny{margin-top:10px;font-size:12px;color:var(--muted)}
+.ok{color:#9fffb2}
+.bad{color:#ff9fb0}
+
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.segBtn{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  padding:10px 12px;border-radius:14px;
+  cursor:pointer;
+}
+.segBtn.active{border-color:rgba(78,161,255,.7);background:rgba(78,161,255,.16)}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  padding:8px 10px;border-radius:999px;
+  cursor:pointer;font-size:13px;
+}
+.chip.active{border-color:rgba(78,161,255,.7);background:rgba(78,161,255,.16)}
+
+.notice{
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.04);
+}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{
+  background: rgba(17,27,47,.78);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+}
+.statLabel{font-size:12px;color:var(--muted)}
+.statValue{font-size:24px;font-weight:900;margin-top:6px}
+
+.tableWrap{overflow:auto;border-radius:14px;border:1px solid var(--line);margin-top:10px}
+.table{width:100%;border-collapse:collapse;min-width:680px;background:rgba(255,255,255,.02)}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}
+th{font-size:12px;color:var(--muted);background:rgba(255,255,255,.03)}
+.linkBtn{
+  display:inline-block;
+  padding:8px 10px;border-radius:12px;
+  border:1px solid rgba(78,161,255,.35);
+  background:rgba(78,161,255,.14);
+  color:var(--text);text-decoration:none;
+}
+.linkBtn:hover{border-color:rgba(78,161,255,.7)}
+
+.footer{margin:16px 0;color:var(--muted);font-size:12px;text-align:center}
+.hint{margin-top:10px;color:var(--muted);font-size:12px}
+code{background:rgba(255,255,255,.06);padding:2px 6px;border-radius:8px}
+
+
+.pillWrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{
+  display:inline-flex;gap:6px;align-items:center;
+  padding:6px 10px;border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);font-size:12px
+}
+.pill.online{border-color:rgba(159,255,178,.35);background:rgba(159,255,178,.10)}
+.pill.offline{border-color:rgba(255,159,176,.35);background:rgba(255,159,176,.10)}
+.pill.neutral{border-color:rgba(255,255,255,.12)}
+
+.notice.ok{border-color:rgba(159,255,178,.35);background:rgba(159,255,178,.10)}
+.notice.warn{border-color:rgba(255,226,146,.35);background:rgba(255,226,146,.10)}
+.notice.bad{border-color:rgba(255,159,176,.35);background:rgba(255,159,176,.10)}
+
+.statusGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+@media (max-width:860px){.statusGrid{grid-template-columns:1fr}}
+
+.statusCard{
+  text-align:left;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  color:var(--text);
+  border-radius:18px;
+  padding:14px;
+  cursor:pointer;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.statusCard:hover{border-color:rgba(78,161,255,.45)}
+.statusCard.active{border-color:rgba(78,161,255,.8);background:rgba(78,161,255,.10)}
+.statusCard.green.active{border-color:rgba(159,255,178,.70);background:rgba(159,255,178,.10)}
+.statusCard.red.active{border-color:rgba(255,159,176,.70);background:rgba(255,159,176,.10)}
+.statusCard.yellow.active{border-color:rgba(255,226,146,.70);background:rgba(255,226,146,.10)}
+
+.statusIcon{font-size:20px;line-height:1}
+.statusTitle{font-weight:900}
+.statusDesc{font-size:12px;color:var(--muted);margin-top:4px}
+
+.btn.primary{
+  border-color:rgba(78,161,255,.65);
+  background:rgba(78,161,255,.22);
+}
